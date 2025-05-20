@@ -39,3 +39,57 @@ Action	Command
 Merge remote changes	git pull origin main
 Rebase on remote	git pull --rebase origin main
 Force push (overwrite)	git push --force origin main
+=====================================================
+In Git, push and pull are two essential commands used for sharing and retrieving code between your local repository and a remote repository (like GitHub, GitLab, Bitbucket, etc.). Here's a breakdown of what they do:
+
+🔼 git push
+Purpose: Upload your local commits (changes) to a remote repository.
+
+Syntax:
+bash
+Copy
+Edit
+git push <remote> <branch>
+Example:
+bash
+Copy
+Edit
+git push origin main
+origin: The default name of the remote repository.
+
+main: The branch you're pushing to.
+
+What it does:
+Sends your local changes to the remote repo.
+
+Other collaborators will see your changes once they pull.
+
+🔽 git pull
+Purpose: Fetch and merge changes from a remote repository into your current local branch.
+
+Syntax:
+bash
+Copy
+Edit
+git pull <remote> <branch>
+Example:
+bash
+Copy
+Edit
+git pull origin main
+What it does:
+Downloads the latest changes from the remote branch.
+
+Merges them into your current local branch.
+
+Visual Summary:
+sql
+Copy
+Edit
+Local Repo  <-- git pull --  Remote Repo
+           --> git push -->
+Common Pitfalls:
+If your local branch is behind the remote, git push may fail. You'll need to git pull first to sync.
+
+Merge conflicts can occur during git pull if changes overlap.
+==============================================================================================================
