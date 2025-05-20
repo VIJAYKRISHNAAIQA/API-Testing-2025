@@ -1,1 +1,41 @@
-This is the file1.This is Extension of the file1 vaersion.
+This is the file1.This is Extension of the file1 version.
+You're seeing this error because the remote branch (main on GitHub) has commits that your local branch does not. Git is refusing to let you push because it would overwrite remote history.
+
+✅ What to Do
+You need to pull the latest changes from the remote before you can push.
+
+🔧 Fix it step-by-step:
+1. Pull the remote changes and merge them:
+bash
+Copy
+Edit
+git pull origin main
+If there are no merge conflicts, Git will merge them and you're done. Then push:
+
+bash
+Copy
+Edit
+git push origin main
+2. If you want a cleaner history, use rebase instead:
+bash
+Copy
+Edit
+git pull --rebase origin main
+This will replay your commits on top of the latest remote commits. Then push:
+
+bash
+Copy
+Edit
+git push origin main
+⚠️ If You Are Sure You Want to Overwrite Remote
+Use force push only if you're 100% sure your local version should overwrite everything on GitHub (e.g., it’s a solo project and remote changes aren’t important):
+
+bash
+Copy
+Edit
+git push --force origin main
+📌 Summary
+Action	Command
+Merge remote changes	git pull origin main
+Rebase on remote	git pull --rebase origin main
+Force push (overwrite)	git push --force origin main
