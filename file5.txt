@@ -1,1 +1,188 @@
 This is My File5.
+==================================================================================
+Here’s a useful list of git log commands tailored for a QA automation tester to review code changes on a daily basis. These help you inspect commits, changes, and authorship—critical for understanding what's changed in the code you're testing.
+
+🔍 1. Basic Git Log – See recent commits
+bash
+Copy
+Edit
+git log --oneline --graph --decorate --all
+Shows a compact summary of commits
+
+Visualizes branches and merges
+
+📅 2. Git log for today's commits
+bash
+Copy
+Edit
+git log --since=midnight --oneline --author="Your Name"
+Shows commits from today
+
+Use to verify what you or a teammate did today
+
+🗓️ 3. Git log for the last 7 days
+bash
+Copy
+Edit
+git log --since="7 days ago" --oneline
+Good for weekly test planning or retrospective
+
+📂 4. Check commits on a specific file (e.g., test case file)
+bash
+Copy
+Edit
+git log --oneline path/to/your/file.py
+Track changes in test files or configs
+
+👤 5. Commits by a specific developer
+bash
+Copy
+Edit
+git log --author="developer@example.com" --oneline
+Use to trace changes from developers for test case targeting
+
+🧪 6. Check commit messages with "test" or "fix" keywords
+bash
+Copy
+Edit
+git log --grep="test" --oneline
+git log --grep="fix" --oneline
+Filter commits relevant to testing or bug fixes
+
+💬 7. Show commit details with diff (what exactly changed)
+bash
+Copy
+Edit
+git log -p -n 1
+Shows patch/diff of the last commit
+
+Use -n 5 to show the last 5
+
+🧭 8. Log between two tags or branches
+bash
+Copy
+Edit
+git log v1.0..v2.0 --oneline
+Useful for regression testing or version comparisons
+
+🧹 Optional: Clean Log Output (Date, Author, Message)**
+bash
+Copy
+Edit
+git log --pretty=format:"%h | %an | %ad | %s" --date=short
+Customized and readable summary log
+
+Would you like a script to run these automatically for daily reports or summaries?
+
+
+
+You said:
+start from basics and ordered usgae
+
+ChatGPT said:
+Sure! Here's a basic-to-advanced ordered guide for using git log as a QA Automation Tester, structured for daily usage and growing proficiency.
+
+🧰 Level 1: The Basics – Just getting started
+1.1 🔍 View commit history (simple and readable)
+bash
+Copy
+Edit
+git log
+Shows full commit history (author, date, message)
+
+Good starting point to review what has changed
+
+1.2 🧾 View condensed summary of commits
+bash
+Copy
+Edit
+git log --oneline
+Shows each commit in one line (short SHA and message)
+
+Quick overview of changes
+
+🧰 Level 2: Visual and Date-Based History
+2.1 🌳 Visualize branch and merge history
+bash
+Copy
+Edit
+git log --oneline --graph --decorate --all
+Adds a visual tree showing branches and merges
+
+Use to understand branching history
+
+2.2 📅 Show commits made today
+bash
+Copy
+Edit
+git log --since=midnight --oneline
+See what was committed since the start of the day
+
+Helpful for daily testing review
+
+2.3 📆 Show commits from the last 7 days
+bash
+Copy
+Edit
+git log --since="7 days ago" --oneline
+Useful for weekly QA planning or sprint retrospectives
+
+🧰 Level 3: File-Specific and Author-Based
+3.1 🧪 View changes to a specific file
+bash
+Copy
+Edit
+git log --oneline path/to/your/test_file.py
+See the history of changes for a test script or configuration file
+
+3.2 👤 View commits by a specific author
+bash
+Copy
+Edit
+git log --author="John Doe" --oneline
+Track what a specific developer contributed
+
+🧰 Level 4: Keyword Filtering and Diffs
+4.1 🔍 Search commit messages with keywords
+bash
+Copy
+Edit
+git log --grep="test" --oneline
+git log --grep="bugfix" --oneline
+Useful for finding test-related or bug-related commits
+
+4.2 🧾 See what exactly changed (diff view)
+bash
+Copy
+Edit
+git log -p -n 1
+Shows code changes in the most recent commit
+
+Use -n 3 to see the last 3 commits' diffs
+
+🧰 Level 5: Compare Tags, Branches, or Custom Formats
+5.1 🔁 Compare two tags or versions
+bash
+Copy
+Edit
+git log v1.0..v2.0 --oneline
+View changes between releases for regression testing
+
+5.2 🧹 Custom clean log format
+bash
+Copy
+Edit
+git log --pretty=format:"%h | %an | %ad | %s" --date=short
+More readable output: commit hash, author, date, message
+
+Great for daily summaries or QA documentation
+
+✅ Summary for Daily QA Usage:
+Use Case	Command
+Quick overview	git log --oneline
+Today's commits	git log --since=midnight --oneline
+Weekly review	git log --since="7 days ago" --oneline
+Test file history	git log --oneline path/to/test_file.py
+Diff of last change	git log -p -n 1
+Search commits with "test"	git log --grep="test" --oneline
+=====================
