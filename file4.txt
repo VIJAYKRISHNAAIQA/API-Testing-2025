@@ -1,0 +1,90 @@
+This is file4.
+==========================================================================================================================================================
+Here's a simple and practical setup to automate daily/weekly git log reports using shell scripts or Git aliases—ideal for a QA Automation Tester.
+
+🛠️ Option 1: Shell Script for Daily/Weekly Git Logs
+🔄 Step 1: Create the Script File
+Create a file named qa_git_log_report.sh:
+
+bash
+Copy
+Edit
+nano qa_git_log_report.sh
+🧪 Step 2: Paste This Script
+bash
+Copy
+Edit
+#!/bin/bash
+
+# Change this to your repo path if needed
+REPO_PATH="/path/to/your/git/repo"
+
+# Output file
+TODAY=$(date +"%Y-%m-%d")
+OUTPUT_FILE="$REPO_PATH/git_log_report_$TODAY.txt"
+
+cd $REPO_PATH || exit
+
+echo "Git Log Report for $TODAY" > "$OUTPUT_FILE"
+echo "==============================" >> "$OUTPUT_FILE"
+
+echo -e "\n📅 Commits Today:" >> "$OUTPUT_FILE"
+git log --since=midnight --pretty=format:"%h | %an | %ad | %s" --date=short >> "$OUTPUT_FILE"
+
+echo -e "\n📂 Test File Changes (example: test_login.py):" >> "$OUTPUT_FILE"
+git log --pretty=format:"%h | %an | %ad | %s" --date=short path/to/test_login.py >> "$OUTPUT_FILE"
+
+echo -e "\n🔍 Recent Bugfixes or Test Commits:" >> "$OUTPUT_FILE"
+git log --since="7 days ago" --grep="test\|fix" --pretty=format:"%h | %an | %ad | %s" --date=short >> "$OUTPUT_FILE"
+
+echo -e "\n✅ Done. Report saved to $OUTPUT_FILE"
+✅ Step 3: Make it Executable
+bash
+Copy
+Edit
+chmod +x qa_git_log_report.sh
+🕒 Step 4 (Optional): Add to Cron for Daily Execution
+bash
+Copy
+Edit
+crontab -e
+Add this line to run it every day at 6 PM:
+
+bash
+Copy
+Edit
+0 18 * * * /path/to/qa_git_log_report.sh
+🛠️ Option 2: Git Aliases (Quick Commands)
+🧰 Add to Your .gitconfig
+Open or create your Git config:
+
+bash
+Copy
+Edit
+nano ~/.gitconfig
+Add under [alias] section:
+
+ini
+Copy
+Edit
+[alias]
+    logtoday = log --since=midnight --oneline
+    logweek = log --since="7 days ago" --oneline
+    logdiff = log -p -n 1
+    logtest = log --grep="test" --oneline
+    logclean = log --pretty=format:"%h | %an | %ad | %s" --date=short
+🔎 Usage Example:
+bash
+Copy
+Edit
+git logtoday       # View today's commits
+git logweek        # View last 7 days of commits
+git logdiff        # View the last commit's diff
+git logtest        # Search "test" commits
+git logclean       # Clean formatted output
+✅ Which Should You Use?
+Use Case	Best Option
+Daily/weekly automated reporting	Shell script with cron
+Quick on-demand logs in terminal	Git aliases
+
+=================================================================================================================================
